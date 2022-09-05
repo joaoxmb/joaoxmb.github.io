@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    /* FORMULARIO */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+    [desativado]{
+      color: #999999 !important;
+      pointer-events: none;
+      touch-action: none;
+    }
+
+    body{
+      font-family: 'Roboto', sans-serif !important;
+      width: 100%;
+      height: 100%;
+      font-size: 18px;
+      font-weight: 400;
+      scroll-behavior: smooth;
+      margin: 0;
+      color: #231f20;
+      background: #f2f1f6;
+      transition: all 0.3s;
+    }
+
+    /* html::before {
+      content: '';
+      width: 200%;
+      height: 200%;
+      background: #f2f1f6;
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      z-index: 0;
+    } */
+
+    a,
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-weight: 500;
+    }
+
+    h4 {
+      font-size: 18px;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    p {
+      font-weight: 400;
+      color: #949398;
+      font-size: 15px;
+      margin: 0;
+    }
+
+    .ct-nome{
+      color: #949398;
+      padding: 5px 20px;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+
+    .ct-descricao{
+      padding: 5px 20px;
+      font-size: 16px;
+      color: #949398;
+    }
+
+    .ct-cabecalho{
+      display: flex;
+      justify-content: space-between;
+      color: #007aff;
+      padding: 18px 20px;
+    }
+    
+    .ct-cabecalho h4 {
+      font-weight: 400;
+      color: #231f20;
+    }
+    .ct-cabecalho > div{
+      min-width: 50px;
+    }
+    .ct-cabecalho > div:last-child{
+      text-align: right;
+      font-weight: bold;
+    }
+    
+    .ct-all {
+    max-width: 500px;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 50%;
+    top: 0%;
+    -webkit-transform: translate(-50%, -0%);
+    -ms-transform: translate(-50%, -0%);
+    transform: translate(-50%, -0%);
+    transition: all 0.3s;
+    background: #f2f1f6;
+    border-radius: 20px;
+    overflow: hidden;
+    }
+
+    .ct-all-container{
+      overflow-x: hidden;
+      overflow-y: overlay;
+      height: 100%;
+    }
+
+    .ct-lista {
+      background: #fff;
+      border-radius: 15px;
+      padding: 0 0 0 20px;
+    }
+
+    .ct-lista .item {
+      padding: 13px 20px 13px 0;
+      display: flex;
+      border-bottom: 1px solid #f2f1f6;
+      align-items: center;
+      position: relative;
+    }
+    
+    .ct-inputs {
+      background: #fff;
+      border-radius: 15px;
+      padding: 0 0 0 20px;
+    }
+    .ct-inputs .input:not(:last-child){
+      border-bottom: 1px solid #f2f1f6;
+    }
+    .input {
+      padding: 13px 20px 13px 0;
+      display: flex;
+      align-items: center;
+    }
+    .input label{
+      flex: 0 0 auto;
+    }
+    .ct-inputs .input input{
+      width: 100%;
+      height: 100%;
+      border: none !important;
+      outline: none !important;
+      padding: 0 0 0 8px;
+      z-index: 1;
+      font-size: 18px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background: transparent;
+      font-family: 'Roboto', sans-serif !important;
+      color: #949398;
+      transition: all 0.3s;
+    }
+
+    .ct-inputs .input input:focus{
+      color: #231f20;
+    }
+
+    .rolagem {
+      overflow-x: hidden;
+      overflow-y: overlay;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      transition-delay: 0.3s;
+      transition: all 0.3s;
+    }
+
+    /* Editor */
+    #input_tipo {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      width: 100%;
+    }
+
+    #input_tipo>li {
+      display: inline-block;
+      padding: 14px 0px;
+      margin: 0;
+      width: 100%;
+      text-align: center;
+      z-index: 1;
+      cursor: pointer;
+      -webkit-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+      -o-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+      transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    #input_tipo>#nav_indicator {
+      position: absolute;
+      display: inline-block;
+      width: 0px;
+      padding: 0;
+      bottom: 0;
+      height: 100%;
+      transition-property: left, width;
+      transition-duration: 0.3s, 0.3s;
+      z-index: 0;
+      border-radius: 10px;
+    }
+
+    #input_tipo>#nav_indicator::after {
+      content: '';
+      width: calc(100% - 10px);
+      height: calc(100% - 10px);
+      background: #ffffff;
+      z-index: 5;
+      position: absolute;
+      left: 5px;
+      top: 5px;
+      border-radius: 10px;
+    }
+
+    #input_tipo #nav-background {
+      width: 100%;
+      height: 100%;
+      background: #e3e2e8;
+      position: absolute;
+      z-index: 0;
+    }
+
+      /* Container Diarias */
+
+        #ct_diarias .conteudo .item > div:first-child{
+          width: 45px;
+          margin-right: 10px;
+          text-align: center;
+        }
+
+        #ct_diarias .conteudo .item > div:first-child > div:first-child{
+          background: #e3e2e8;
+          border-radius: 10px 10px 0 0;
+          font-size: 13px;
+        }
+        #ct_diarias .conteudo .item > div:first-child > div:last-child{
+          background: #f2f1f6;
+          font-size: 22px;
+          border-radius: 0 0 10px 10px;
+          padding: 3px 0;
+        }
+
+        #btn_adicionar-diaria{
+          padding: 13px 20px 13px 0;
+          color: #007aff;
+          cursor: pointer;
+        }
+      
+      /* Container Diarias FIM */
+    
+    /* Editor FIM */
+
+  </style>
+</head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/moment.min.js"></script>
+
+<body>
+  
+  <div id="aba_inicio" class="ct-all">
+      <div class="ct-all-container" style="padding: 20px;">
+
+        <br>
+        <br>
+        <br>
+        <br>
+  
+        <h1 onclick="app.abaEditor.abrir();" style="margin: 0 0 20px 20px;font-weight: bold;">Bom Dia, <br> João Victor</h1>
+  
+        <div class="search-box" style="width: 100%;height: 50px;background: #fff;border-radius: 15px;margin: 0 0 20px 0;">
+        </div>
+  
+        <div id="ct_jobs" class="ct-lista">
+          <div class="item">
+            <h4>Samsung</h4>
+            <p>teste</p>
+          </div>
+  
+          <div class="item">
+            <h4>Samsung</h4>
+            <p>teste</p>
+          </div>
+        </div>
+
+        <h3 style="padding: 10px 0 10px 20px;">Não emitidas</h3>
+        <div id="ct_notaFiscal" class="ct-lista"></div>
+
+        <h3 style="padding: 10px 0 10px 20px;">A receber</h3>
+        <div id="ct_pagamento" class="ct-lista"></div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+  </div>
+
+  <div style="display: none;" id="aba_editor" class="ct-all">
+    <div class="ct-cabecalho">
+      <div onclick="app.abaEditor.fechar();">Voltar</div>
+      <h4>Minuta</h4>
+      <div>OK</div>
+    </div>
+
+    <div class="ct-all-container" style="padding: 20px;">
+
+        <br>
+
+        <div class="ct-nome">Tipo de minuta</div>
+        <ul id="input_tipo">
+          <i id="nav-background"></i>
+          <i id="nav_indicator"></i>
+              <li onclick="app.abaEditor.inputTipo(this)" data-tipo="0">Progressiva</li>
+              <li onclick="app.abaEditor.inputTipo(this)" data-tipo="1">Corrida</li>
+              <li onclick="app.abaEditor.inputTipo(this)" data-tipo="2">Pacote</li>
+        </ul>
+
+        <br>
+
+        <div class="ct-inputs">
+          <div class="input">
+            <label>Job</label> 
+            <input type="text"/>
+          </div>
+          <div class="input">
+            <label>Produtora</label> 
+            <input type="text"/>
+          </div>
+          <div class="input">
+            <label>Solicitante</label> 
+            <input type="text"/>
+          </div>
+        </div>
+
+        <br>
+
+        <div class="ct-nome">configuracao</div>
+        <div class="ct-inputs">
+          <div class="input">
+            <label>Valor por hora</label> 
+            <input type="text"/>
+          </div>
+          <div class="input">
+            <label>Mínimo de hora</label> 
+            <input type="text"/>
+          </div>
+        </div>
+
+        <br>
+
+        <div class="ct-nome">Diarias</div>
+        <div id="ct_diarias" class="ct-lista">
+          <div class="conteudo">
+
+            <div class="item">
+              <div>
+                <div>AGO</div>
+                <div>20</div>
+              </div>
+              <div>
+                <h4>Samsung</h4>
+                <p>20:00 as 6:00 10 horas | R$ 450,00</p>
+              </div>
+            </div>
+            <div class="item">
+              <div>
+                <div>AGO</div>
+                <div>20</div>
+              </div>
+              <div>
+                <h4>Samsung</h4>
+                <p>20:00 as 6:00 10 horas | R$ 450,00</p>
+              </div>
+            </div>
+
+          </div>
+          <div>
+            <div id="btn_adicionar-diaria">
+              Adicionar diaria
+            </div>
+          </div>
+        </div>
+
+        <div class="ct-descricao">10 Horas | 0 Horas extras | R$ 0,00 Total extra | R$ 450,00 Total</div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+  </div>
+
+  <div style="display: none;"  id="aba_editor-diaria" class="ct-all">
+    <div style="padding: 20px;">
+
+    </div>
+  </div>
+
+  <script>
+
+    let app = {
+
+      data: [
+      
+        {
+          id: 0,
+          vencimento: 20/08/2003,
+          pagamento: true,
+          notaFiscal: false,
+          tipo: 0, // 0 = progressiva, 1 = corrida, 2 = pacote
+          produtora: 'Santeria',
+          solicitante: 'Manuela Tossi',
+          job: 'Samsung',
+          valorHora: 45,
+          minimoDeHoras: 10,
+          diarias: [
+              {},
+              {},
+          ],
+        },
+        {
+          id: 1,
+          vencimento: 20/08/2003,
+          pagamento: false,
+          notaFiscal: true,
+          tipo: 0, // 0 = progressiva, 1 = corrida, 2 = pacote
+          produtora: 'O2 Filmes',
+          solicitante: 'Débora Branco',
+          job: 'Bradesco',
+          valorHora: 45,
+          minimoDeHoras: 10,
+          diarias: [
+              {},
+              {},
+              {},          
+            ],
+        },
+
+      ],
+      
+      abaInicio: {
+
+        gerar: {
+          jobs: function(array){
+                    $('#ct_jobs').html('');
+
+                    array.forEach((a,b,c) => {
+
+                      let el = `<div class="item" onclick="app.abaEditor.abrir(`+a.id+`);">
+                                <div>
+                                  <h4>`+a.job+`</h4>
+                                  <p>Produtora: `+a.produtora+` <br> Solicitante: `+a.solicitante+`</p> 
+                                </div>
+                                <div style="position: absolute;right: 20px;text-align: center;">
+                                  <h4>R$ 100,00</h4>
+                                  <p>`+a.diarias.length+` Diarias</p>
+                                </div>
+                              </div>`;
+
+                      $('#ct_jobs').append(el);
+
+                    });
+                  },
+          
+          notaFiscal: function(all){
+
+                    $('#ct_notaFiscal').html('');
+
+                    let array = [];
+
+                    app.data.forEach((element) => {
+                      if(all == true){
+                        array.push(element);
+                      }else if(element.notaFiscal == false){
+                        array.push(element);
+                      }
+                    });
+
+                    
+                    array.forEach((a,b,c) => {
+
+                      let el = `<div class="item">
+                                <div>
+
+                                  `+(a.notaFiscal == true ? '<input type="checkbox" onclick="app.abaInicio.inputNotaFiscal(this,'+a.id+');" style="width: 20px;height: 20px;" checked/>' : '<input type="checkbox" onclick="app.abaInicio.inputNotaFiscal(this,'+a.id+');"  style="width: 20px;height: 20px;"/>')+`
+
+                                </div>
+                                <div style="margin-left: 10px;">
+                                  <h4>`+a.job+`</h4>
+                                  <p>Produtora: `+a.produtora+`</p> 
+                                </div>
+                                <div style="position: absolute;right: 20px;text-align: center;">
+                                  <h4>R$ 100,00</h4>
+                                  <p>`+a.diarias.length+` Diarias</p>
+                                </div>
+                              </div>`;
+
+                      $('#ct_notaFiscal').append(el);
+
+                    });
+          },
+
+          pagamento: function(all){
+                    $('#ct_pagamento').html('');
+
+                    let array = [];
+
+                    app.data.forEach((element) => {
+                      if(all == true){
+                        array.push(element);
+                      }else if(element.pagamento == false){
+                        array.push(element);
+                      }
+                    });
+
+                    
+                    array.forEach((a,b,c) => {
+
+                      let el = `<div class="item">
+                                <div>
+
+                                  `+(a.pagamento == true ? '<input type="checkbox" onclick="app.abaInicio.inputPagamento(this,'+a.id+');" style="width: 20px;height: 20px;" checked/>' : '<input type="checkbox" onclick="app.abaInicio.inputPagamento(this,'+a.id+');" style="width: 20px;height: 20px;"/>')+`
+
+                                </div>
+                                <div style="margin-left: 10px;">
+                                  <h4>`+a.job+`</h4>
+                                  <p>Produtora: `+a.produtora+`</p> 
+                                </div>
+                                <div style="position: absolute;right: 20px;text-align: center;">
+                                  <h4>R$ 100,00</h4>
+                                  <p>`+a.diarias.length+` Diarias</p>
+                                </div>
+                              </div>`;
+
+                      $('#ct_pagamento').append(el);
+
+                    });
+          },
+        },
+
+        inputPagamento: function(el, job){
+          app.data[job].pagamento = $(el).is(":checked");
+          app.abaInicio.gerar.pagamento(false);
+        },      
+        
+        inputNotaFiscal: function(el, job){
+          app.data[job].notaFiscal = $(el).is(":checked");
+          app.abaInicio.gerar.notaFiscal(false);
+        }
+
+      },
+
+      abaEditor: {
+        
+        array: null,
+
+        abrir: function(id){
+
+         app.abaEditor.array = app.data[id];
+
+          $('#aba_editor').css({'top': '100%','display': 'block'});
+          $('#aba_inicio').css({transform: 'translate(-50%, -0%) scale(0.93)',filter: 'brightness(0.85)'});
+          $('body').css({background: '#231f20'});
+
+          setTimeout(function() {
+            $('#aba_editor').css({'top': 'calc(0% + 40px)','display': 'block'});
+          }, 100);
+        },
+
+        fechar: function(){
+
+          $('#aba_editor').css({'top': '100%'});
+          $('#aba_inicio').css({transform: 'translate(-50%, -0%) scale(1)',filter: 'brightness(1)'});
+          $('body').css({background: ''});
+
+          setTimeout(function() {
+            $('#aba_editor').css('display', 'none');
+          }, 200);
+
+        },
+        
+        inputTipo: function(el){
+            let $el = $(el)
+            $el.addClass("selecionado").siblings().removeClass("selecionado");
+            $("#nav_indicator").css({left: ""+$el.position().left+"px",width: ""+$el.width()+"px"});
+
+            app.data.tipo = $el.attr('data-tipo')*1;
+        },
+
+      },
+
+    }
+
+
+    app.abaInicio.gerar.jobs(app.data);
+    app.abaInicio.gerar.notaFiscal(false);
+    app.abaInicio.gerar.pagamento(false);
+
+
+  </script>
+
+</body>
+</html>
