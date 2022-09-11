@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="./dist/styles.css">
+
+</head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/moment.min.js"></script>
+<script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+<script type="text/javascript" src="./index.js"></script>
+<script type="text/javascript" src="./data.js"></script>
+<script type="text/javascript" src="./apps/editorDiaria.js"></script>
+<script type="text/javascript" src="./apps/editorJob.js"></script>
+<script type="text/javascript" src="./apps/editorMinuta.js"></script>
+
+<body>
+  
+  <div id="aba_inicio" class="ct-all">
+      <div class="ct-all-container" style="padding: 20px;">
+
+        <br>
+        <br>
+        <br>
+        <br>
+  
+        <h1 onclick="editorJob.abrir(0);" style="margin: 0 0 20px 20px;font-weight: bold;">Bom Dia, <br> João Victor</h1>
+  
+        <div class="search-box" style="width: 100%;height: 50px;background: #fff;border-radius: 10px;margin: 0 0 20px 0;">
+        </div>
+
+        <h3 style="padding: 10px 0 10px 20px;">A receber</h3>
+        <div id="ct_jobs" class="ct-lista"></div>
+
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+  </div>
+
+  <div style="display: none;" id="aba_job" class="ct-all">
+    <div class="ct-cabecalho">
+      <div onclick="editorJob.fechar();">Voltar</div>
+      <h4>Job</h4>
+      <div>OK</div>
+    </div>
+    <div class="ct-all-container" style="padding: 20px;">
+
+
+      <div class="ct-inputs">
+        <div class="input">
+          <input type="text" id="in_job" style="color: #000;" placeholder="Job"/>
+        </div>
+        <div class="input">
+          <input type="text" id="in_produtora" placeholder="Produtora"/>
+        </div>
+        <div class="input">
+          <input type="text" id="in_solicitante" placeholder="Solicitante"/>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="ct-nome">Diarias</div>
+      <div id="ct_minuta" class="ct-lista">
+        <div class="conteudo">
+
+          <div class="item">
+            <div>
+              <div>20</div>
+              <div>AGO</div>
+            </div>
+            <div>
+              <h4>Samsung</h4>
+              <p>20:00 as 6:00 10 horas | R$ 450,00</p>
+            </div>
+          </div>
+          <div class="item">
+            <div>
+              <div>20</div>
+              <div>AGO</div>
+            </div>
+            <div>
+              <h4>Samsung</h4>
+              <p>20:00 as 6:00 10 horas | R$ 450,00</p>
+            </div>
+          </div>
+
+        </div>
+        <div>
+          <div id="btn_adicionar-diaria" onclick="editorMinuta.abrir(editorJob.dataUtilizada.id);">
+            Ver mais...
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="ct-inputs">
+        <div class="input">
+          <label>Vencimento</label>
+          <input type="text"/>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="ct-inputs">
+        <div class="input" style="padding: 7px 20px 7px 0;justify-content: space-between;">
+          <label>Nota fiscal</label>
+          <input type='checkbox' data-estilo='boolean' id='checkbox-1'>
+          <label for='checkbox-1'></label>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="display: none;" id="aba_editor" class="ct-all">
+    <div class="ct-cabecalho">
+      <div onclick="editorMinuta.fechar();">Voltar</div>
+      <h4>Minuta</h4>
+      <div onclick="editorMinuta.salvar();">OK</div>
+    </div>
+
+    <div class="ct-all-container" style="padding: 20px;">
+
+        <div class="ct-nome">Tipo de minuta</div>
+        <ul id="input_tipo">
+          <i id="nav-background"></i>
+          <i id="nav_indicator"></i>
+              <li onclick="editorMinuta.input(this, 'tipo')" data-tipo="0">Progressiva</li>
+              <li onclick="editorMinuta.input(this, 'tipo')" data-tipo="1">Corrida</li>
+              <li onclick="editorMinuta.input(this, 'tipo')" data-tipo="2">Pacote</li>
+        </ul>
+
+        <br>
+
+
+        <!-- <div class="ct-nome">configuracao</div> -->
+        <div class="ct-inputs">
+          <div class="input">
+            <label>Valor por hora</label> 
+            <input type="dinheiro" inputmode="numeric" oninput="editorMinuta.input(this, 'valorHora');" id="in_valorhora"/>
+          </div>
+          <div class="input">
+            <label>Mínimo de hora</label> 
+            <input type="numero" inputmode="numeric" oninput="editorMinuta.input(this, 'minimoDeHoras');" id="in_minhora"/>
+          </div>
+        </div>
+
+        <br>
+
+        <div class="ct-nome">Diarias</div>
+        <div id="ct_diarias" class="ct-lista">
+          <div class="conteudo">
+
+            <div class="item">
+              <div>
+                <div>AGO</div>
+                <div>20</div>
+              </div>
+              <div>
+                <h4>Samsung</h4>
+                <p>20:00 as 6:00 10 horas | R$ 450,00</p>
+              </div>
+            </div>
+            <div class="item">
+              <div>
+                <div>AGO</div>
+                <div>20</div>
+              </div>
+              <div>
+                <h4>Samsung</h4>
+                <p>20:00 as 6:00 10 horas | R$ 450,00</p>
+              </div>
+            </div>
+
+          </div>
+          <div>
+            <div id="btn_adicionar-diaria" onclick="editorDiaria.abrir(editorMinuta.dataUtilizada.id,0,'criar')">
+              Adicionar diaria
+            </div>
+          </div>
+        </div>
+
+        <div class="ct-descricao" id="ct_resultados">10 Horas | 0 Horas extras |<br> R$ 0,00 Total extra | R$ 450,00 Total</div>
+
+        <br>
+
+        <div class="ct-nome">Observacao</div>
+        <div class="ct-inputs">
+          <div class="input">
+            <textarea id="in_observacao" oninput="editorMinuta.textArea(this);editorMinuta.input(this, 'obs');">teste</textarea>
+          </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+  </div>
+
+  <div style="display: none;" id="aba_diaria" class="ct-all">
+    <div class="ct-cabecalho">
+      <div onclick="editorDiaria.fechar();">Cancelar</div>
+      <h4 class="nome-page">Diaria</h4>
+      <div onclick="editorDiaria.salvar();">Salvar</div>
+    </div>
+
+    <div class="ct-all-container" style="padding: 20px;">
+
+      <div class="ct-inputs">
+        <div class="input">
+          <input type="text" id="in_ocorrencia" style="color: #000;" onkeyup="editorDiaria.input(this, 'ocorrencia');" placeholder="Ocorrência"/>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="ct-inputs">
+        <div class="input">
+          <label>Início</label>
+          <input type="datetime-local" id="in_inicio" oninput="editorDiaria.input(this, 'inicio');" />
+        </div>
+        <div class="input" style="justify-content: space-between;">
+          <label>Termino</label>
+          <select id="in_termino" oninput="editorDiaria.input(this, 'horas');"></select>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="ct-inputs">
+        <div class="input">
+          <label>Valor</label>
+          <input type="dinheiro" id="in_valor" onkeyup="editorDiaria.input(this, 'valor');"/>
+        </div>
+      </div>
+
+      <br>
+
+      <div id="in_apagarDiaria" onclick="editorDiaria.apagar();" class="button" vermelho>
+        Apagar diaria
+      </div>
+      
+    </div>
+  </div>
+
+
+
+  <script>
+
+    app.gerar.jobs();
+    // editorJob.abrir(0, 'abrir');
+    // editorDiaria.abrir(0,null,'criar');
+
+    $('input[type="dinheiro"]').inputmask( 'currency',{"autoUnmask": true,
+            radixPoint:",",
+            groupSeparator: ".",
+            allowMinus: false,
+            prefix: 'R$ ',            
+            digits: 2,
+            digitsOptional: false,
+            rightAlign: true,
+            unmaskAsNumber: true,
+    });
+    $('input[type="numero"]').inputmask('decimal',{"autoUnmask": true,
+            allowMinus: false,          
+            rightAlign: true,
+            unmaskAsNumber: true,
+    });
+
+    $('.input').click(function(event) {
+        $(this).find('input,textarea,select').focus();
+      });
+
+  </script>
+
+</body>
+</html>
