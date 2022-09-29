@@ -1,0 +1,56 @@
+[
+  {
+    "nome": "Geografia",
+    "foto": "https://i.imgur.com/VOupnR8.png",
+    "items": [
+      {
+        "nome": "Filtro grafico 1",
+        "foto": "https://i.imgur.com/iF3I4rk.png",
+        "video": "",
+        "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi euismod iaculis fermentum. Donec eget nulla nunc. Maecenas nec posuere lectus, sed ullamcorper eros. Pellentesque tincidunt nisi risus, eget condimentum lorem commodo vel. Ut massa risus, volutpat vel nisl a, mattis vehicula turpis. Morbi dictum justo nisi, ut placerat neque sollicitudin quis. Donec aliquam dictum interdum. Donec ante diam, scelerisque nec orci vitae, finibus euismod quam."
+      },
+      {
+        "nome": "geografia filtro 2",
+        "foto": "https://i.imgur.com/I3Vprlo.png",
+        "video": "",
+        "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi euismod iaculis fermentum. Donec eget nulla nunc. Maecenas nec posuere lectus, sed ullamcorper eros. Pellentesque tincidunt nisi risus, eget condimentum lorem commodo vel. Ut massa risus, volutpat vel nisl a, mattis vehicula turpis. Morbi dictum justo nisi, ut placerat neque sollicitudin quis. Donec aliquam dictum interdum. Donec ante diam, scelerisque nec orci vitae, finibus euismod quam."
+      }
+    ]
+  },
+  {
+    "nome": "Matemática",
+    "foto": "https://i.imgur.com/tzAtzmY.png",
+    "items": [
+      {
+        "nome": "Mate filtro 1",
+        "foto": "https://i.imgur.com/QuOdbEc.png",
+        "video": "",
+        "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi euismod iaculis fermentum. Donec eget nulla nunc. Maecenas nec posuere lectus, sed ullamcorper eros. Pellentesque tincidunt nisi risus, eget condimentum lorem commodo vel. Ut massa risus, volutpat vel nisl a, mattis vehicula turpis. Morbi dictum justo nisi, ut placerat neque sollicitudin quis. Donec aliquam dictum interdum. Donec ante diam, scelerisque nec orci vitae, finibus euismod quam."
+      },
+      {
+        "nome": "matematica filtro 2",
+        "foto": "https://i.imgur.com/Kaa9LDk.png",
+        "video": "",
+        "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi euismod iaculis fermentum. Donec eget nulla nunc. Maecenas nec posuere lectus, sed ullamcorper eros. Pellentesque tincidunt nisi risus, eget condimentum lorem commodo vel. Ut massa risus, volutpat vel nisl a, mattis vehicula turpis. Morbi dictum justo nisi, ut placerat neque sollicitudin quis. Donec aliquam dictum interdum. Donec ante diam, scelerisque nec orci vitae, finibus euismod quam."
+      }
+    ]
+  },
+  {
+    "nome": "Automação",
+    "foto": "https://i.imgur.com/0K5W9Ew.jpg",
+    "items": [
+      {
+        "nome": "Filtro macao 1",
+        "foto": "https://i.imgur.com/eimti6s.png",
+        "video": "",
+        "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi euismod iaculis fermentum. Donec eget nulla nunc. Maecenas nec posuere lectus, sed ullamcorper eros. Pellentesque tincidunt nisi risus, eget condimentum lorem commodo vel. Ut massa risus, volutpat vel nisl a, mattis vehicula turpis. Morbi dictum justo nisi, ut placerat neque sollicitudin quis. Donec aliquam dictum interdum. Donec ante diam, scelerisque nec orci vitae, finibus euismod quam."
+      },
+      {
+        "nome": "Filtro automacao 2",
+        "foto": "https://i.imgur.com/ydwAQAY.png",
+        "video": "",
+        "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi euismod iaculis fermentum. Donec eget nulla nunc. Maecenas nec posuere lectus, sed ullamcorper eros. Pellentesque tincidunt nisi risus, eget condimentum lorem commodo vel. Ut massa risus, volutpat vel nisl a, mattis vehicula turpis. Morbi dictum justo nisi, ut placerat neque sollicitudin quis. Donec aliquam dictum interdum. Donec ante diam, scelerisque nec orci vitae, finibus euismod quam."
+      }
+    ]
+  }
+]
