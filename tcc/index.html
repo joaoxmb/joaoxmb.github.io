@@ -219,13 +219,19 @@
 
   <script>
     
-    $.getJSON( "./data.json", function( data ) {
-        app.categorias = data;
+        const url = '/data.json';
+        //Resolved
+        const fetchPromise1 = fetch(url);
+            fetchPromise1.then(response => response.json()).then(data => {
+              console.log(data);
+              app.categorias = data;
 
-        app.abaInicio.gerarCategorias();
-        app.abaInicio.gerarDestaque();
-        app.hash.abrir();
-    });
+              app.abaInicio.gerarCategorias();
+              app.abaInicio.gerarDestaque();
+              app.hash.abrir();
+
+        });
+    
     
   </script>
 
