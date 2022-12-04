@@ -1,0 +1,35 @@
+[
+  {
+    "nome": "Biologia",
+    "foto": "https://i.imgur.com/VOupnR8.png",
+    "items": [
+      {
+        "nome": "Tiranossauro Rex",
+        "foto": "./imgs/trex.jpg",
+        "video": "",
+        "descricao": "O Tiranossauro Rex viveu entre 67 e 65 milhões de anos atrás, no final do período cretáceo. Medindo cerca de 5 metros de altura e pesando entre 8 a 10 toneladas tinha uma grande estrutura óssea, uma mordida feroz e era rápido quando corria.",
+        "link": "https://www.instagram.com/ar/481104594148246/?ch=MGQ2YWQ2MGY2NDU1ZTg4Zjk4OGYxZTZhNWQ3M2NjZmY%3D"
+      },
+      {
+        "nome": "Velociraptor",
+        "foto": "./imgs/veloci.png",
+        "video": "",
+        "descricao": "Medindo aproximadamente 1,5 metros de comprimento e cerca de 60 cm de altura, esta espécie pesava em torno dos 50 Kg e tinha o costume de caçar em bandos de 5 a 20 animais. Como um predador feroz e agressivo, alcançava velocidades semelhantes a de um leopardo.",
+        "link": "https://www.instagram.com/ar/1199788617619706/?ch=MmUwYmM3MTZmMTdmZDkzYTEyNjZkNmMzNTA3NTk1NjU%3D"
+      }
+    ]
+  },
+  {
+    "nome": "Geometria",
+    "foto": "https://i.imgur.com/tzAtzmY.png",
+    "items": [
+      {
+        "nome": "Formas Geométricas",
+        "foto": "./imgs/geometric.png",
+        "video": "",
+        "descricao": "As figuras geométricas são elementos com formas, tamanhos e dimensões no plano ou espaço. Por exemplo, o triângulo, o quadrado, a pirâmide e a esfera são figuras geométricas. Na matemática, estes elementos são estudados no ramo da geometria.",
+        "link": "https://www.instagram.com/ar/867842681021692/?ch=OTJlM2QyMTk1MjQ3N2Y1Y2JkYWE1YTJjN2YyNjMxNzc%3D"
+      }
+    ]
+  }
+]
