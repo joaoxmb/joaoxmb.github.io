@@ -219,18 +219,14 @@
   <script src="/script.js"></script>
 
   <script>
-
-      const data = fetch(`data.json`)
-        .then(response => response.json())
-        .then((data) => {
-          
+    
+    $.getJSON( "./data.json", function( data ) {
         app.categorias = data;
 
         app.abaInicio.gerarCategorias();
         app.abaInicio.gerarDestaque();
         app.hash.abrir();
-
-      });
+    });
     
   </script>
 
