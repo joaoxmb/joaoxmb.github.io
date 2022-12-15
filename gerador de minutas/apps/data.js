@@ -1,41 +1,16 @@
 let data = {
   user: 43717567000196,
   tipo: "tabela",
-  produtora: "teste produtora",
-  solicitante: "teste solicitante",
-  job: "teste job",
-  observacao: "teste obs",
+  produtora: "",
+  solicitante: "",
+  job: "",
+  observacao: "",
   valor: {
     tabela: "1",
-    valorHora: 45,
+    valorHora: 52,
     minimoDeHoras: 10
   },
   diarias: [
-    {
-      "inicio": "2022-08-21T10:00",
-      "horas": 15,
-      "ocorrencia": "Montagem"
-    },
-    {
-      "inicio": "2022-09-07T07:00",
-      "horas": 10,
-      "ocorrencia": "Retiradaa e montagem"
-    },
-    {
-      "inicio": "2022-08-21T10:00",
-      "horas": 15,
-      "ocorrencia": "Montagem"
-    },
-    {
-      "inicio": "2022-09-07T07:00",
-      "horas": 10,
-      "ocorrencia": "Retiradaa e montagem"
-    },
-    {
-      "inicio": "2022-08-21T10:00",
-      "horas": 15,
-      "ocorrencia": "Montagem"
-    }
   ],
 };
 
