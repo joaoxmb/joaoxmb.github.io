@@ -1,0 +1,25 @@
+#aba-user .cadastrar-user{
+  margin: 45% 0;
+}
+#aba-user .cadastrar-user p{
+  padding: 0 0 0 20px;
+  margin: 0 0 10px 0;
+}
+#aba-user .cadastrar-user h4{
+  padding: 0 0 0 20px;
+  margin: 10px 0 0 0;
+}
+#aba-user .cadastrar-user .button-continuar{
+  padding: 15px;
+  background: #fff;
+  width: fit-content;
+  border-radius: 10px;
+  margin: 10px 0 0 20px;
+  cursor: pointer;
+}
+#aba-user .cadastrar-user .ct-descricao{
+  margin: 10px 0 0 0;
+}
+#aba-user .cadastrar-user input{
+  text-align: right;
+}
