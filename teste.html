@@ -7,13 +7,28 @@
   <title>Document</title>
 </head>
 <body>
-  <button onclick="share();">Click to share</button>
+  <button onclick="shareImage();">Click to share</button>
   <script>
-  const share = () => {
-    navigator.share({
-      text: 'Follow me to get more web development content.'
-    })
-  }
+    
+    async function shareImage() {
+  const response = await fetch('https://i.imgur.com/KtGkd1X.png');
+  const blob = await response.blob();
+  const filesArray = [
+    new File(
+      [blob],
+      'meme.jpg',
+      {
+        type: "image/jpeg",
+        lastModified: new Date().getTime()
+      }
+   )
+  ];
+  const shareData = {
+    files: filesArray,
+  };
+  navigator.share(shareData);
+}
+
   </script>
   
 </body>
