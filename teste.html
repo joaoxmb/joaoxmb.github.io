@@ -7,11 +7,13 @@
   <title>Document</title>
 </head>
 <body>
+  <button onclick="share();">Click to share</button>
   <script>
-
-navigator.share({
-  text: 'Follow me to get more web development content.'
-})
+  const share = () => {
+    navigator.share({
+      text: 'Follow me to get more web development content.'
+    })
+  }
   </script>
   
 </body>
