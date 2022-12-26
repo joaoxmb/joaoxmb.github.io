@@ -438,7 +438,3 @@ input::-webkit-date-and-time-value {
   justify-content: center;
   cursor: pointer !important;
 }
-
-#ct_resultados{
-  text-align: right;
-}

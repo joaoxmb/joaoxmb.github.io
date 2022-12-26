@@ -81,11 +81,13 @@ userLocalStorage();
 const userContinuar = () => {
   const nome = $('#input_nome').val();
   const funcao = $('#input_funcao').val();
+  const drt = $('#input_drt').val();
 
   if( nome.length != 0 && funcao.length != 0 ){
     const criandoUserData = {
       nome: nome,
       funcao: funcao,
+      drt: drt,
       resultadoCnpj: USER
     }
     localStorage.setItem('user-cnpj-infos', btoa(JSON.stringify(criandoUserData)));

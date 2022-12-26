@@ -11,6 +11,7 @@ const inserirCabecalho = () => {
   $('#user_nome').text(USER.nome);
   $('#user_funcao').text(USER.funcao);
   $('#user_cnpj').text(USER.resultadoCnpj.cnpj);
+  $('#user_drt').text(`DRT ${USER.drt}`);
 };
 
 inserirCabecalho();
