@@ -14,8 +14,6 @@ const download = {
     const blob = await (await fetch(base64url)).blob();
     const file = new File([blob], 'fileName.png', { type: blob.type });
     navigator.share({
-      title: 'Hello',
-      text: 'Check out this image!',
       files: [file],
     });
   }
