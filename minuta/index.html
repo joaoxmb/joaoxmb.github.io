@@ -1,0 +1,181 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../src/reset.css">
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+  
+  <script src="../src/jquery-3.6.3.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment-with-locales.min.js"></script>
+  <script src="../src/html2canvas.min.js"></script>
+
+  <script src="../TABELA.js"></script>
+  <script src="../USER.js"></script>
+  <script src="../apps/calculadora.js"></script>
+
+  <div class="container">
+
+    <div class="top">
+      <div class="header-container">
+
+        <div class="header-title">
+          <div>
+            <h1>FECHAMENTO</h1>
+            <h4 id="fechamento-data">29 DE SETEMBRO DE 2022</h4>
+          </div>
+          <!-- <div>
+            <img src="./logo.svg" alt="logo">
+          </div> -->
+        </div>
+  
+        <div class="header-itens">
+          <div>
+            <h5>DE:</h5>
+            <h2 id="user-name"></h2>
+            <p id="user-info">
+            </p>
+          </div>
+  
+        </div>
+
+      </div>
+  
+      <div class="minutaBody-container">
+          <p id="minuta-descriminacao"></p>
+      </div>
+
+      <div class="table-container">
+        <table id="table_por_hora">
+          <thead>
+            <tr class="table-title">
+              <th>Data</th>
+              <th>Ocorrência</th>
+              <th>Período</th>
+              <th>Horas</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+  
+          <tbody></tbody>
+  
+          <tfoot>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="border">Cobrança</td>
+              <td id="cobranca-total" class="border">R$ 180</td>
+            </tr>
+            <tr>
+              <td id="user-banco" style="position: absolute;">
+                <b>DADOS BANCÁRIOS: </b> <br>
+              </td>
+              <td colspan="2"></td>
+              <td class="border">Horas</td>
+              <td id="horas-total" class="border">10</td>
+            </tr>
+            <tr>
+              <td colspan="3"></td>
+              <td class="border"><b>Total</b></td>
+              <td id="valor-total" class="border">R$ 180</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <table id="table_pacote">
+          <thead>
+            <tr class="table-title">
+              <th width="30%">Data</th>
+              <th colspan="3">Ocorrência</th>
+              <th width="20%">Total</th>
+            </tr>
+          </thead>
+  
+          <tbody></tbody>
+  
+          <tfoot>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="border">Cobrança</td>
+              <td id="cobranca-total" class="border">R$ 180</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="border">Diarias</td>
+              <td id="diarias-total" class="border">10</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td width="20%" class="border"><b>Total</b></td>
+              <td id="valor-total" class="border">R$ 180</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+    <div class="bottom">
+
+      <p id="obs"></p>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+  <script>
+    const DATA = JSON.parse(atob(location.search.replace('?', '')));
+
+    user();
+    inserirDiarias();
+    inserirTotal();
+    inserirObservacao();
+
+    if (window.opener != null && !window.opener.closed) {
+      // var txtName = window.opener.document.getElementById("teste");
+      // txtName.src = 'https://www.aspsnippets.com/images/metro/author_icon.jpg';
+
+      html2canvas(document.body, {
+        scale: 2,
+      }).then(function(canvas) {
+        const image = canvas.toDataURL();
+        const opener = window.opener
+
+       $(window.opener.document.querySelector('#aba-download .image-minuta')).attr('src', image);
+
+       $(window.opener.document.querySelector('#aba-download')).css({ 'top': '100%', 'display': 'block' });
+       $(window.opener.document.querySelector('#aba-inicio')).css({ transform: 'translate(-50%, -0%) scale(0.93)', filter: 'brightness(0.85)' });
+       $(window.opener.document.querySelector('body')).css({ background: '#231f20' });
+
+        setTimeout(function () {
+          $(window.opener.document.querySelector('#aba-download')).css({ 'top': 'calc(0% + 40px)', 'display': 'block' });
+          window.close();
+        }, 100);
+
+      });
+
+    };
+  </script>
+
+
+</body>
+</html>
