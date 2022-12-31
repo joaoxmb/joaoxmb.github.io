@@ -156,9 +156,9 @@
       if(navigator.share){
         const image = canvas.toDataURL();
         const blob = await (await fetch(image)).blob();
-        const file = new File([blob], 'document', { type: blob.type });
+        const file = new File([blob], 'fileName.png', { type: blob.type });
         navigator.share({
-          files: [file],
+          files: [file]
         });
       }else{
         window.print();
