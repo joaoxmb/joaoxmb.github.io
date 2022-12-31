@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Gerador</title>
 
   <link rel="stylesheet" href="src/reset.css">
   <link rel="stylesheet" href="styles.css">
@@ -18,11 +18,11 @@
 
   <script src="DATA.js"></script>
   <script src="TABELA.js"></script>
+  <script src="USER.js"></script>
   <script src="apps/diaria.js"></script>
   <script src="apps/minuta.js"></script>
   <script src="apps/calculadora.js"></script>
   <script src="apps/cobranca.js"></script>
-  <script src="apps/download.js"></script>
 
 
   <div id="aba-inicio" class="container">
@@ -34,6 +34,9 @@
             <p class="user-info">
               <span id="user_cnpj"></span>
             </p>
+          </div>
+          <div>
+            <img src="/images/plusIcon.svg" alt="Abrir nova aba em branco." onclick="abrirNovaAba();">
           </div>
         </div>
         
@@ -177,17 +180,6 @@
     </div>
   </div>
 
-  <div id="aba-download" class="container">
-    <div class="ct-cabecalho">
-      <div onclick="download.fechar();">Voltar</div>
-      <div onclick="download.compartilhar();">Compartilhar</div>
-    </div>
-    <div class="padding">
-      <img src="" alt="" class="image-minuta">
-    </div>
-  </div>
-
-  <script src="USER.js"></script>
   <script src="script.js"></script>
 
 </body>

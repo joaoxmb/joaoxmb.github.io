@@ -88,7 +88,7 @@ const minuta = {
         `);
       });
 
-      $tabela.val(DATA.valor.tabela);
+      $tabela.val(DATA.valor.tabela).change();
     
     },
 
