@@ -149,22 +149,19 @@
     inserirObservacao();
     inserirNomeAoDocumento();
 
-    html2canvas(document.body, {
+    if(navigator.share){
+      html2canvas(document.body, {
       scale: 3,
-    }).then(async (canvas) => {
-
-      if(navigator.share){
-        const image = canvas.toDataURL();
-        const blob = await (await fetch(image)).blob();
-        const file = new File([blob], 'fileName.png', { type: blob.type });
+      }).then(async ( canvas ) => {
+        const blob = await (await fetch(canvas.toDataURL())).blob();
+        const file = new File([blob], 'fileName.png', { type: 'image/png' });
         navigator.share({
           files: [file]
         });
-      }else{
-        window.print();
-      }
-
-    });
+      });
+    }else{
+      window.print();
+    }
 
   </script>
 
