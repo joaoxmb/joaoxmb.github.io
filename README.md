@@ -1,2 +1,2 @@
 # jaoxmb.github.io
-Gerador de minuta
+Gerador de minuta :)
