@@ -163,7 +163,9 @@
       scale: 3,
       }).then(canva => {
         minutaImage = canva.toDataURL();
-        $('.container').click();
+        setTimeout(() => {  
+          $('.container').click();
+        }, 100);
       });
     }else{
       window.print();
