@@ -154,11 +154,9 @@
     }).then(async (canvas) => {
 
       if(navigator.share){
-        const ultimaDiaria = DATA.diarias[DATA.diarias.length-1];
-        const { inicio, horas } = ultimaDiaria;
         const image = canvas.toDataURL();
         const blob = await (await fetch(image)).blob();
-        const file = new File([blob], `Minuta ${DATA.job} ${moment(moment(inicio).add(horas ,'hours')).format('DD-MM-YYYY')}`, { type: blob.type });
+        const file = new File([blob], 'document', { type: blob.type });
         navigator.share({
           files: [file],
         });
