@@ -1,6 +1,6 @@
 const dinheiro = ( value ) => value.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
 const abrirMinuta = () => {
-  let popUp = window.open(`/minuta/index.html?${btoa(JSON.stringify(DATA))}`, "teste", "left=100,top=100,width=320,height=600");
+  let popUp = window.open(`/minuta/index.html?${btoa(JSON.stringify(DATA))}`);
       try {
           popUp.focus();
       }catch (e) {
@@ -11,11 +11,21 @@ const inserirCabecalho = () => {
   $('#user_nome').text(USER.nome);
   $('#user_cnpj').text(USER.empresa.cnpj);
 };
+const abrirNovaAba = () => {
+  window.open(`/`);
+};
 
-inserirCabecalho();
-minuta.iniciar();
-minuta.load.diarias();
-minuta.load.tabela();
+
+$('select').change(function(){
+  let text = $(this).find("option:selected").text();
+  let $test = $("<span>").html(text)
+
+  $test.appendTo($('body'));
+  let width = $test.width();
+  $test.remove();
+
+  $(this).width(width);
+});
 
 const dinheiroConfig = {
   autoUnmask: true,
@@ -26,6 +36,7 @@ const dinheiroConfig = {
   digits: 2,
   digitsOptional: false,
   unmaskAsNumber: true,
+  rightAlign: false
 };
 
 $('input[type="dinheiro"]').inputmask('currency', dinheiroConfig);
@@ -41,6 +52,12 @@ $('.input').click(function (event) {
 });
 
 $('textarea').on('input', element =>{
-  element.target.style.height = 'auto';
-  element.target.style.height = (element.target.scrollHeight) + 'px';
-});
+  element = element.target;
+  element.style.height = 'auto';
+  element.style.height = (element.scrollHeight) + 'px';
+})
+
+inserirCabecalho();
+minuta.iniciar();
+minuta.load.diarias();
+minuta.load.tabela();

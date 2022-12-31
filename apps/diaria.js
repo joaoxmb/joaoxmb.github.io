@@ -4,6 +4,16 @@ const diaria =  {
   open_tipo: '',
   criar_diaria: {},
 
+  abrirContainer(){
+    $('#aba-diaria').css({ 'top': '100%', 'display': 'block' });
+    $('#aba-inicio').css({ transform: 'translate(-50%, -0%) scale(0.93)', filter: 'brightness(0.85)', padding: '20px 0 0 0', overflow: 'hidden'});
+    $('body').css({ background: '#231f20' });
+  
+    setTimeout(function () {
+      $('#aba-diaria').css({ 'top': 'calc(0% + 40px)', 'display': 'block' });
+    }, 100);
+  },
+
   abrir: ( diariaNumber ) => {
     diaria.open_diaria = diariaNumber;
     diaria.open_tipo = 'abrir';
@@ -35,16 +45,8 @@ const diaria =  {
       $('#aba-diaria #valor').parent().attr('desativado', 'desativado');
     }
 
-          $('#aba-diaria').css({ 'top': '100%', 'display': 'block' });
-          $('#aba-inicio').css({ transform: 'translate(-50%, -0%) scale(0.93)', filter: 'brightness(0.85)', padding: '20px 0 0 0', overflow: 'hidden'});
-          $('body').css({ background: '#231f20' });
-
-          setTimeout(function () {
-            $('#aba-diaria').css({ 'top': 'calc(0% + 40px)', 'display': 'block' });
-          }, 100);
-
-          cobranca.loadCobrancas();
-
+    cobranca.loadCobrancas();
+    diaria.abrirContainer();
     verificandoCobrancas();
   },
 
@@ -75,28 +77,18 @@ const diaria =  {
       $('#aba-diaria #valor').parent().removeAttr('desativado');
     }
     
-          $('#aba-diaria').css({ 'top': '100%', 'display': 'block' });
-          $('#aba-inicio').css({ transform: 'translate(-50%, -0%) scale(0.93)', filter: 'brightness(0.85)' });
-          $('body').css({ background: '#231f20' });
-
-          setTimeout(function () {
-            $('#aba-diaria').css({ 'top': 'calc(0% + 40px)', 'display': 'block' });
-          }, 100);
-          
-          cobranca.loadCobrancas();
-
+    cobranca.loadCobrancas();
+    diaria.abrirContainer();
   },
 
-  fechar: function(){
-
+  fechar: function(){ 
     $('#aba-diaria').css({'top': '100%'});
     $('#aba-inicio').css({transform: 'translate(-50%, -0%) scale(1)',filter: 'brightness(1)', padding: '0', overflow: 'unset'});
     $('body').css({background: ''});
-
+  
     setTimeout(function() {
       $('#aba-diaria').css('display', 'none');
     }, 200);
-
   },
 
   salvar: function(){
@@ -191,9 +183,8 @@ const diaria =  {
 
     }
 
-    $('#aba-diaria #termino').val(diaria.criar_diaria.horas||DATA.valor.minimoDeHoras||TABELA.find(e => e.id == DATA.valor.tabela).valores[0].horas);
+    $('#aba-diaria #termino').val(diaria.criar_diaria.horas||DATA.valor.minimoDeHoras||TABELA.find(e => e.id == DATA.valor.tabela).valores[0].horas).change();
     $('#aba-diaria #valor').val(calculadora.valorPorHora(diaria.criar_diaria.horas));
-
   }
 
 }

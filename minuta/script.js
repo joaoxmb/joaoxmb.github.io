@@ -1,3 +1,5 @@
+const DATA = JSON.parse(atob(location.search.replace('?', '')));
+
 const dinheiro = ( value ) => value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
 
 const formatarNome = ( name ) => {
@@ -25,12 +27,6 @@ const user = () => {
 
   $('#minuta-descriminacao').html(`
     Serviço prestado como ${USER.funcao} solicitado por <b>${DATA.solicitante}</b> para a empresa <b>${DATA.produtora}</b> no Job <b>${DATA.job}</b>
-  `);
-
-  $('#user-banco').append(`
-    ${USER.empresa.bancarios.banco} <br>
-    AG ${USER.empresa.bancarios.ag} ${USER.empresa.bancarios.conta} <br>
-    PIX ${USER.empresa.bancarios.pix} 
   `);
 
 };
@@ -102,12 +98,20 @@ const inserirObservacao = () => {
   
   if(DATA.observacao != ''){
     $('#obs').html(`
-      <b>Observação:</b> <br>
+      <b>Observação:</b>
       ${DATA.observacao}
     `);
   }
 
 };
+
+const inserirNomeAoDocumento = () => {
+  const ultimaDiaria = DATA.diarias[DATA.diarias.length-1];
+  const { inicio, horas } = ultimaDiaria;
+  document.title = `
+    Minuta ${DATA.job} ${moment(moment(inicio).add(horas ,'hours')).format('DD-MM-YYYY')}
+  `;
+}
 
 const tipoDaMinuta = () => {
   if( DATA.tipo == 'pacote' ){

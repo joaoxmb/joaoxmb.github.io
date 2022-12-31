@@ -157,9 +157,14 @@ input::-webkit-date-and-time-value {
 
 .ct-user{
   margin: 80px 0 0 0;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.ct-user .--user-padding{
-  padding: 0 10px;
+.ct-user img{
+  width: 25px;
+  cursor: pointer;
 }
 .ct-user .user-info{
   margin: 5px 0;

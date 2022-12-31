@@ -9,15 +9,7 @@ let DATA = {
     "valorHora": 52,
     "minimoDeHoras": 10
   },
-  "diarias": [
-    {
-      "inicio": "2022-08-21T10:00",
-      "horas": 15,
-      "ocorrencia": "Montagem",
-      "valor": 520,
-      "cobranca": []
-    }
-  ]
+  "diarias": []
 };
 const pegarDataHash = () => {
   const hash = window.location.hash.replace('#', '');

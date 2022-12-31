@@ -72,9 +72,7 @@
               <td id="cobranca-total" class="border">R$ 180</td>
             </tr>
             <tr>
-              <td id="user-banco" style="position: absolute;">
-                <b>DADOS BANCÁRIOS: </b> <br>
-              </td>
+              <td id="obs"></td>
               <td colspan="2"></td>
               <td class="border">Horas</td>
               <td id="horas-total" class="border">10</td>
@@ -114,9 +112,8 @@
               <td id="cobranca-total" class="border">R$ 180</td>
             </tr>
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td id="obs"></td>
+              <td colspan="2"></td>
               <td class="border">Diarias</td>
               <td id="diarias-total" class="border">10</td>
             </tr>
@@ -134,7 +131,9 @@
 
     <div class="bottom">
 
-      <p id="obs"></p>
+      <div class="agradicimento">
+        <h2>MUITO <br> OBRIGADO!</h2>
+      </div>
 
     </div>
 
@@ -143,37 +142,32 @@
   <script src="script.js"></script>
 
   <script>
-    const DATA = JSON.parse(atob(location.search.replace('?', '')));
 
     user();
     inserirDiarias();
     inserirTotal();
     inserirObservacao();
+    inserirNomeAoDocumento();
 
-    if (window.opener != null && !window.opener.closed) {
-      // var txtName = window.opener.document.getElementById("teste");
-      // txtName.src = 'https://www.aspsnippets.com/images/metro/author_icon.jpg';
+    html2canvas(document.body, {
+      scale: 3,
+    }).then(async (canvas) => {
 
-      html2canvas(document.body, {
-        scale: 2,
-      }).then(function(canvas) {
+      if(navigator.share){
+        const ultimaDiaria = DATA.diarias[DATA.diarias.length-1];
+        const { inicio, horas } = ultimaDiaria;
         const image = canvas.toDataURL();
-        const opener = window.opener
+        const blob = await (await fetch(image)).blob();
+        const file = new File([blob], `Minuta ${DATA.job} ${moment(moment(inicio).add(horas ,'hours')).format('DD-MM-YYYY')}`, { type: blob.type });
+        navigator.share({
+          files: [file],
+        });
+      }else{
+        window.print();
+      }
 
-       $(window.opener.document.querySelector('#aba-download .image-minuta')).attr('src', image);
+    });
 
-       $(window.opener.document.querySelector('#aba-download')).css({ 'top': '100%', 'display': 'block' });
-       $(window.opener.document.querySelector('#aba-inicio')).css({ transform: 'translate(-50%, -0%) scale(0.93)', filter: 'brightness(0.85)' });
-       $(window.opener.document.querySelector('body')).css({ background: '#231f20' });
-
-        setTimeout(function () {
-          $(window.opener.document.querySelector('#aba-download')).css({ 'top': 'calc(0% + 40px)', 'display': 'block' });
-          window.close();
-        }, 100);
-
-      });
-
-    };
   </script>
 
 
