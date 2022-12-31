@@ -18,7 +18,7 @@
   <script src="../USER.js"></script>
   <script src="../apps/calculadora.js"></script>
 
-  <div class="container">
+  <div class="container" onclick="compartilhar()">
 
     <div class="top">
       <div class="header-container">
@@ -142,6 +142,7 @@
   <script src="script.js"></script>
 
   <script>
+    let minutaImage;
 
     user();
     inserirDiarias();
@@ -149,15 +150,20 @@
     inserirObservacao();
     inserirNomeAoDocumento();
 
+    const compartilhar = async () => {
+      const blob = await (await fetch(minutaImage)).blob();
+      const file = new File([blob], 'fileName.png', { type: 'image/png' });
+      navigator.share({
+        files: [file]
+      });
+    };
+
     if(navigator.share){
       html2canvas(document.body, {
       scale: 3,
-      }).then(async ( canvas ) => {
-        const blob = await (await fetch(canvas.toDataURL())).blob();
-        const file = new File([blob], 'fileName.png', { type: 'image/png' });
-        navigator.share({
-          files: [file]
-        });
+      }).then(canva => {
+        minutaImage = canva.toDataURL();
+        $('.container').click();
       });
     }else{
       window.print();
