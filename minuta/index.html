@@ -18,8 +18,23 @@
   <script src="../USER.js"></script>
   <script src="../apps/calculadora.js"></script>
 
-  <div class="container" onclick="compartilhar()">
+  <div class="header">
+    <div class="-back" onclick="window.close()">
+      <img src="./images/back.svg" alt="">
+      <span>Voltar</span>
+    </div>
+    <div class="-title">
+      <h4 id="ct-title">Job Ypê 20-08-2003</h4>
+      <p id="ct-subtitle">gerado com o cu</p>
+    </div>
+    <div class="-buttons">
+      <div onclick="compartilhar()">
+        <img src="./images/share.svg" alt="">
+      </div>
+    </div>
+  </div>  
 
+  <div class="minuta">
     <div class="top">
       <div class="header-container">
 
@@ -68,19 +83,19 @@
               <td></td>
               <td></td>
               <td></td>
-              <td class="border">Cobrança</td>
-              <td id="cobranca-total" class="border">R$ 180</td>
+              <td class="lborder">Cobrança</td>
+              <td id="cobranca-total" class="rborder">R$ 180</td>
             </tr>
             <tr>
               <td id="obs"></td>
               <td colspan="2"></td>
-              <td class="border">Horas</td>
-              <td id="horas-total" class="border">10</td>
+              <td class="lborder">Horas</td>
+              <td id="horas-total" class="rborder">10</td>
             </tr>
             <tr>
               <td colspan="3"></td>
-              <td class="border"><b>Total</b></td>
-              <td id="valor-total" class="border">R$ 180</td>
+              <td class="lborder"><b>Total</b></td>
+              <td id="valor-total" class="rborder">R$ 180</td>
             </tr>
             <tr>
               <td></td>
@@ -108,21 +123,21 @@
               <td></td>
               <td></td>
               <td></td>
-              <td class="border">Cobrança</td>
-              <td id="cobranca-total" class="border">R$ 180</td>
+              <td class="lborder">Cobrança</td>
+              <td id="cobranca-total" class="rborder">R$ 180</td>
             </tr>
             <tr>
               <td id="obs"></td>
               <td colspan="2"></td>
-              <td class="border">Diarias</td>
-              <td id="diarias-total" class="border">10</td>
+              <td class="lborder">Diarias</td>
+              <td id="diarias-total" class="rborder">10</td>
             </tr>
             <tr>
               <td></td>
               <td></td>
               <td></td>
-              <td width="20%" class="border"><b>Total</b></td>
-              <td id="valor-total" class="border">R$ 180</td>
+              <td width="20%" class="lborder"><b>Total</b></td>
+              <td id="valor-total" class="rborder">R$ 180</td>
             </tr>
           </tfoot>
         </table>
@@ -131,47 +146,24 @@
 
     <div class="bottom">
 
-      <div class="agradicimento">
-        <h2>MUITO <br> OBRIGADO!</h2>
-      </div>
-
     </div>
-
   </div>
 
-  <script src="script.js"></script>
+  <div class="footer">
+    <div class="-buttons">
+      <div onclick="imprimir()">
+        <img src="./images/print.svg" alt="">
+      </div>
+      <div>
+        <a id="download">
+          <img src="./images/download.svg" alt="">
+        </a>
+      </div>
+    </div>
+  </div>
 
-  <script>
-    let minutaImage;
-
-    user();
-    inserirDiarias();
-    inserirTotal();
-    inserirObservacao();
-    inserirNomeAoDocumento();
-
-    const compartilhar = async () => {
-      const blob = await (await fetch(minutaImage)).blob();
-      const file = new File([blob], 'fileName.png', { type: 'image/png' });
-      navigator.share({
-        files: [file]
-      });
-    };
-
-    if(navigator.share){
-      html2canvas(document.body, {
-      scale: 3,
-      }).then(canva => {
-        minutaImage = canva.toDataURL();
-        setTimeout(() => {  
-          $('.container').click();
-        }, 100);
-      });
-    }else{
-      window.print();
-    }
-
-  </script>
+  <script src="table.js"></script>
+  <script src="share.js"></script>
 
 
 </body>

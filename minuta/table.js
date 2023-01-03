@@ -8,7 +8,6 @@ const formatarNome = ( name ) => {
   })).join(' ')
 };
 
-
 const user = () => {
   const dataComMunicipio = ( ) => {
     let date = moment(new Date()).locale('pt-br');
@@ -48,7 +47,7 @@ const inserirDiarias = () => {
 
       $('table tbody').append(`
         <tr>
-          <td rowspan="${element.cobranca.length+1}" class="border"><span>${moment(element.inicio).format('DD/MM/YYYY')}</span></td>
+          <td rowspan="${element.cobranca.length+1}"><span>${moment(element.inicio).format('DD/MM/YYYY')}</span></td>
           <td>${element.ocorrencia}</td>
           <td>${periodo()}</td>
           <td>${element.horas}</td>
@@ -59,7 +58,7 @@ const inserirDiarias = () => {
     }else{
       $('table tbody').append(`
         <tr>
-          <td rowspan="${element.cobranca.length+1}" class="border"><span>${moment(element.inicio).format('DD/MM/YYYY HH:mm')}</span></td>
+          <td rowspan="${element.cobranca.length+1}"><span>${moment(element.inicio).format('DD/MM/YYYY HH:mm')}</span></td>
           <td colspan="3">${element.ocorrencia}</td>
           <td>${total()}</td>
         </tr>
@@ -121,6 +120,10 @@ const tipoDaMinuta = () => {
   }
 };
 
-
+user();
+inserirDiarias();
+inserirTotal();
+inserirObservacao();
+inserirNomeAoDocumento();
 
 

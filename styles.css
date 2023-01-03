@@ -444,15 +444,3 @@ input::-webkit-date-and-time-value {
   justify-content: center;
   cursor: pointer !important;
 }
-
-#aba-download{
-  top: 100%;
-  display: none;
-}
-#aba-download .padding{
-  height: calc(100% - 134px);
-}
-#aba-download img{
-  width: 100%;
-  border-radius: 20px;
-}
