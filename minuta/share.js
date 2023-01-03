@@ -11,19 +11,16 @@ const capturarImagemMinuta = () => {
 
   });
 }
-const imprimir = () => {
-  window.print();
-}
 
 const compartilhar = async () =>{
   if(navigator.share){
     const blob = await (await fetch(IMAGE)).blob();
-    const file = new File([blob], { type: 'image/png' });
+    const file = new File([blob], `${nomeArquivo.archive()}.png`, { type: 'image/png' });
     navigator.share({
       files: [file],
     });
   }else{
-    imprimir();
+    window.print();
   }
 };
 

@@ -10,13 +10,13 @@ let DATA = {
     "minimoDeHoras": 10
   },
   "diarias": [
-    {
-      "inicio": "2022-08-21T10:00",
-      "horas": 15,
-      "ocorrencia": "Montagem",
-      "valor": 520,
-      "cobranca": []
-    }
+    // {
+    //   "inicio": "2022-08-21T10:00",
+    //   "horas": 15,
+    //   "ocorrencia": "Montagem",
+    //   "valor": 520,
+    //   "cobranca": []
+    // }
   ]
 };
 const pegarDataHash = () => {
