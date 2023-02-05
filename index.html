@@ -111,7 +111,7 @@
         <br>
 
         <div class="button" onclick="abrirMinuta()" cor="azul">
-          <span>Gerar arquivo da minuta</span>
+          <span>Gerar imagem da minuta</span>
         </div>
 
         <br>
@@ -144,7 +144,7 @@
           <input type="datetime-local" id="inicio" oninput="diaria.input.inicio(this);" />
         </div>
         <div class="input" style="justify-content: space-between;">
-          <label>Termino</label>
+          <label>Término</label>
           <select id="termino" oninput="diaria.input.termino(this);"></select>
         </div>
         <div class="input">
@@ -154,7 +154,7 @@
       </div>
 
       <br>
-      <div class="ct-nome">Cobrança a mais</div>
+      <div class="ct-nome">Cobrança</div>
       <div class="ct-cobranca" id="cobranca">
         <!-- <div class="item">
           <div class="ct-inputs -input-flex">
@@ -168,7 +168,7 @@
         </div> -->
       </div>
       <p class="ct-descricao">
-        Adicionar outra cobrança nessa mesma diaria. <a onclick="cobranca.adicionarCobranca();" cor="azul"> Clique aqui! </a> Cobranças em branco não serão considerados no resultado final.
+        Para adicionar outra ou mais cobranças <a onclick="cobranca.adicionarCobranca();" cor="azul">clique aqui! </a> <br> Cobranças em branco não serão considerados no resultado final.
       </p>
 
       <br>

@@ -37,7 +37,7 @@ const calculadora = {
 
     DATA.diarias.forEach((value) => {
 
-      horas += value.horas; // total horas
+      horas += Number(value.horas); // total horas
 
       if( DATA.tipo == 'tabela' ){
 

@@ -19,6 +19,7 @@ const minuta = {
     
       DATA.diarias.sort((a,b)=> {return new Date(a.inicio)-new Date(b.inicio);}).forEach((a,b)=>{
 
+
         const object = $(`
           <div class="item" onclick="diaria.abrir(${b})">
 
@@ -29,7 +30,7 @@ const minuta = {
               </div>
               <div class="resumo">
                 <h4>${a.ocorrencia}</h4>
-                <p>${moment(a.inicio).format('HH:mm')} as ${moment(a.inicio).add(a.horas,'hours').format('HH:mm')}</p>
+                <p>${moment(a.inicio).format('HH:mm')} as ${moment(a.inicio).add(Number(a.horas),'hour').format('HH:mm')}</p>
 
                 <div class="cobranca-itens-motivo"></div>
               </div>

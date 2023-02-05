@@ -1,4 +1,4 @@
-const DATA = JSON.parse(atob(location.search.replace('?', '')));
+let DATA;
 
 const dinheiro = ( value ) => value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
 
@@ -25,7 +25,7 @@ const user = () => {
   $('#fechamento-data').text(`${dataComMunicipio()}`);
 
   $('#minuta-descriminacao').html(`
-    Serviço prestado como ${USER.funcao} solicitado por <b>${DATA.solicitante}</b> para a empresa <b>${DATA.produtora}</b> no Job <b>${DATA.job}</b>
+    Serviço prestado como ${USER.funcao}, solicitado por <b>${DATA.solicitante}</b>, para a empresa <b>${DATA.produtora}</b> no Job <b>${DATA.job}</b>.
   `);
 
 };
@@ -104,14 +104,6 @@ const inserirObservacao = () => {
 
 };
 
-const inserirNomeAoDocumento = () => {
-  const ultimaDiaria = DATA.diarias[DATA.diarias.length-1];
-  const { inicio, horas } = ultimaDiaria;
-  document.title = `
-    Minuta ${DATA.job} ${moment(moment(inicio).add(horas ,'hours')).format('DD-MM-YYYY')}
-  `;
-}
-
 const tipoDaMinuta = () => {
   if( DATA.tipo == 'pacote' ){
     $('#table_por_hora').remove();
@@ -120,10 +112,26 @@ const tipoDaMinuta = () => {
   }
 };
 
-user();
-inserirDiarias();
-inserirTotal();
-inserirObservacao();
-inserirNomeAoDocumento();
+(async () => {
+
+  const hash = `blob:${location.origin}/${location.search.replace('?', '')}`;
+  const response = await fetch(hash).catch(() => {
+    window.close();
+  });
+  const blob = await response.blob();
+  const text = await blob.text();
+
+  DATA = JSON.parse(text);
+
+  user();
+  inserirDiarias();
+  inserirTotal();
+  inserirObservacao();
+  
+  share();
+
+})();
+
+
 
 

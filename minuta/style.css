@@ -2,11 +2,10 @@
 
 body {
   background: rgb(61, 61, 61);
-  font-family: "Roboto", sans-serif;
-  position: absolute;
+  font-family: Roboto, sans-serif;
   width: 100vw;
   height: 100vh;
-  overflow: auto;
+  overflow: hidden;
 }
 
 b {
@@ -20,6 +19,9 @@ b {
   .header{
     display: none !important;
   }
+  .view-area{
+    overflow: hidden !important;
+  }
 }
 
 
@@ -31,12 +33,12 @@ b {
   background: rgb(255, 255, 255);
   width: 730px;
   min-height: 1014px;
-  position: absolute;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-size: 15px;
-
+  margin: 0 auto;
 }
 
 .minuta .bottom {
@@ -117,6 +119,8 @@ b {
   text-align: left;
   padding: 30px 0 0 0;
   display: grid;
+  width: 330px;
+  word-break: break-all;
 }
 
 .minuta #obs b {
@@ -214,16 +218,23 @@ table .cobranca-item td {
 
 .header .-buttons {
   position: absolute;
-  right: 0;
+  right: 20px;
   display: flex;
 }
 
-.-buttons>div {
-  margin: 0 20px 0 0;
+.-buttons>div:not(:first-child) {
+  margin: 0 0 0 10px;
 }
 
 .-buttons img,
 .header img {
   width: 25px;
   height: 25px;
+}
+
+.view-area{
+  width: 100vw;
+  height: calc(100vh - 54px);
+  overflow: auto;
+  padding: 54px 0 0 0;
 }

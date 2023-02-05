@@ -1,6 +1,10 @@
 const dinheiro = ( value ) => value.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
 const abrirMinuta = () => {
-  let popUp = window.open(`/minuta/index.html?${btoa(JSON.stringify(DATA))}`);
+
+  const blob = new Blob([JSON.stringify(DATA)], {type: 'application/json'});
+  const link = URL.createObjectURL(blob).replace(`blob:${location.origin}/`, '');
+
+  let popUp = window.open(`/minuta/index.html?${link}`);
       try {
           popUp.focus();
       }catch (e) {
@@ -51,13 +55,15 @@ $('.input').click(function (event) {
   $(this).find('input,textarea,select').focus();
 });
 
-$('textarea').on('input', element =>{
-  element = element.target;
+const resizeTextArea = ( element ) => {
   element.style.height = 'auto';
   element.style.height = (element.scrollHeight) + 'px';
-})
+}
+
+$('textarea').on('input', element => resizeTextArea(element.target))
 
 inserirCabecalho();
 minuta.iniciar();
 minuta.load.diarias();
 minuta.load.tabela();
+resizeTextArea($('textarea')[0]);
