@@ -1,0 +1,231 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../src/reset.css">
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+  
+  <script src="../src/jquery-3.6.3.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment-with-locales.min.js"></script>
+  <script src="../src/html2canvas.min.js"></script>
+
+  <script src="../TABELA.js"></script>
+  <script src="../USER.js"></script>
+  <script src="../apps/calculadora.js"></script>
+
+
+  <div style="display: block;" id="printContent">
+    <div class="logo">
+      <h2>MARIO RODRIGUES</h2>
+      <h2>DOS SANTOS</h2>
+      <h4>PRODUÇÕES</h4>
+    </div>
+
+    <div class="dados-pessoais">
+      <p>Razão social: Mario Rodrigues dos Santos LTDA</p>
+      <p>CNPJ: 45.421.670/0001-10</p>
+      <p>Rua: Tiburno, Nº870, Jardim Adelfiori</p>
+      <p>Email: mariorodriguessantos139@gmail.com</p>
+      <p>Fone: (11) 99463-3063</p>
+      <p>DRT-6636/SP</p>
+    </div>
+
+    <table id="dados-primarios">
+      <tr>
+        <td style="width: 110px; text-align: right;">Produtora:</td>
+        <td id="m_produtora" style="width: 344px; text-align: left; padding-left: 10px;">teste</td>
+        <td style="width: 100px; text-align: right;">Solicitante:</td>
+        <td id="m_solicitante" style="width: 219px; text-align: left; padding-left: 10px;">teste</td>
+      </tr>
+      <tr>
+        <td style="width: 110px; text-align: right;">Job:</td>
+        <td id="m_job" style="width: 344px; text-align: left; padding-left: 10px;">teste</td>
+        <td class="m_valhoratext">Valor hora:</td>
+        <td id="m_valorhora">teste</td>
+      </tr>
+      <tr>
+        <td style="width: 110px; text-align: right;">Assist. de set:</td>
+        <td style="width: 344px; text-align: left; padding-left: 10px;" colspan="4">Mario Rodrigues</td>
+      </tr>
+    </table>
+
+    <div class="table-diarias">
+    <table id="diarias">
+      <tr class="table-auto">
+        <th style="width: 130px;">DATA</th>
+        <th style="width: 200px;">OCORRÊNCIA</th>
+        <th style="width: 165px;">HORA INÍCIO</th>
+        <th style="width: 165px;">HORA TERMINO</th>
+        <th style="width: 100px;">HORAS</th>
+        <th>VALOR</th>
+      </tr>
+      <tr class="table-prog">
+        <th style="width: 90px;">DATA</th>
+        <th style="width: 174px;">OCORRÊNCIA</th>
+        <th style="width: 106px;">HORA INÍCIO</th>
+        <th style="width: 126px;">HORA TERMINO</th>
+        <th style="width: 70px;">HORAS</th>
+        <th style="width: 117px;">HORAS EXTRA</th>
+        <th style="width: 117px;">VALOR EXTRA</th>
+        <th>TOTAL</th>
+      </tr>
+    </table>
+  </div>
+    <table id="data-minuta">
+      <tr>
+        <td style="width: 53px; text-align: right;">São Paulo,</td>
+        <td id="m_dataminuta" style="width: 344px; text-align: left; padding-left: 5px;">teste</td>
+        <td style="width: 53px; text-align: right;">Editar Minuta</td>
+      </tr>
+    </table>
+    </div>
+<!-- 
+  <div class="header">
+    <div class="-back" onclick="window.close()">
+      <img src="./images/back.svg" alt="">
+      <span>Voltar</span>
+    </div>
+    <div class="-title">
+      <h4 id="ct-title"></h4>
+      <p id="ct-subtitle"></p>
+    </div>
+    <div class="-buttons">
+      <div>
+        <a id="download">
+          <img src="./images/download.svg" alt="">
+        </a>
+      </div>
+      <div onclick="compartilhar()">
+        <img src="./images/share.svg" alt="">
+      </div>
+    </div>
+  </div>  
+
+  <div class="view-area">
+    <div class="minuta">
+      <div class="top">
+        <div class="header-container">
+  
+          <div class="header-title">
+            <div>
+              <h1>FECHAMENTO</h1>
+              <h4 id="fechamento-data">29 DE SETEMBRO DE 2022</h4>
+            </div>
+            <!-- <div>
+              <img src="./logo.svg" alt="logo">
+            </div> -->
+          </div>
+    
+          <div class="header-itens">
+            <div>
+              <h5>DE:</h5>
+              <h2 id="user-name"></h2>
+              <p id="user-info">
+              </p>
+            </div>
+    
+          </div>
+  
+        </div>
+    
+        <div class="minutaBody-container">
+            <p id="minuta-descriminacao"></p>
+        </div>
+  
+        <div class="table-container">
+          <table id="table_por_hora">
+            <thead>
+              <tr class="table-title">
+                <th>Data</th>
+                <th>Ocorrência</th>
+                <th>Período</th>
+                <th>Horas</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+    
+            <tbody></tbody>
+    
+            <tfoot>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="lborder">Cobrança</td>
+                <td id="cobranca-total" class="rborder">R$ 180</td>
+              </tr>
+              <tr>
+                <td id="obs"></td>
+                <td colspan="2"></td>
+                <td class="lborder">Horas</td>
+                <td id="horas-total" class="rborder">10</td>
+              </tr>
+              <tr>
+                <td colspan="3"></td>
+                <td class="lborder"><b>Total</b></td>
+                <td id="valor-total" class="rborder">R$ 180</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+  
+          <table id="table_pacote">
+            <thead>
+              <tr class="table-title">
+                <th width="30%">Data</th>
+                <th colspan="3">Ocorrência</th>
+                <th width="20%">Total</th>
+              </tr>
+            </thead>
+    
+            <tbody></tbody>
+    
+            <tfoot>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="lborder">Cobrança</td>
+                <td id="cobranca-total" class="rborder">R$ 180</td>
+              </tr>
+              <tr>
+                <td id="obs"></td>
+                <td colspan="2"></td>
+                <td class="lborder">Diarias</td>
+                <td id="diarias-total" class="rborder">10</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td width="20%" class="lborder"><b>Total</b></td>
+                <td id="valor-total" class="rborder">R$ 180</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+  
+      <div class="bottom">
+  
+      </div>
+    </div>
+  </div> -->
+
+  <script src="share.js"></script>
+  <script src="table.js"></script>
+
+
+</body>
+</html>

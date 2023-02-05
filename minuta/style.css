@@ -1,0 +1,209 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+body {
+  background: rgb(61, 61, 61);
+  font-family: Roboto, sans-serif;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+b {
+  font-weight: bold;
+}
+
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+  }
+  .header {
+    display: none !important;
+  }
+  .view-area {
+    overflow: hidden !important;
+  }
+}
+
+/* -------------------- */
+/*        MINUTA        */
+/* -------------------- */
+
+#printContent {
+  background: white;
+  width: 1024px;
+  height: 602px;
+  position: relative;
+  z-index: 0;
+  color: black;
+  margin: 0 auto;
+}
+#printContent:after {
+  content: "";
+  width: 166px;
+  height: 100%;
+  background: #c9c9c9;
+  position: absolute;
+}
+#diarias {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 16px !important;
+}
+.table-diarias {
+  position: absolute;
+  width: 964px;
+  left: 30px;
+  top: 263px;
+  z-index: 1;
+  border-radius: 15px;
+  border: 1px solid;
+  overflow: hidden;
+}
+#diarias td,
+#diarias th {
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  text-align: center;
+  padding: 2px;
+}
+#diarias td:last-child,
+#diarias th:last-child {
+  border-right: none;
+}
+#diarias tr {
+  background-color: #f2f2f2;
+}
+
+#diarias th {
+  background-color: #c9c9c9;
+  color: #050506;
+  font-weight: 500;
+}
+.logo {
+  position: absolute;
+  z-index: 1;
+  top: 45px;
+  left: 30px;
+}
+.logo h2 {
+  margin: 0px;
+  padding: 0px;
+  font-weight: 700;
+  font-size: 29px;
+}
+.logo h4 {
+  margin: 0;
+  padding: 0px;
+  font-size: 19px;
+  font-weight: 500;
+}
+.dados-pessoais {
+  position: absolute;
+  z-index: 1;
+  left: 490px;
+  top: 37px;
+  color: black !important;
+  text-decoration: none !important;
+}
+.dados-pessoais p {
+  margin: 0px;
+  font-size: 14px;
+  font-weight: bold;
+}
+#dados-primarios {
+  border-collapse: collapse;
+  width: 964px;
+  font-size: 16px !important;
+  position: absolute;
+  z-index: 1;
+  left: 30px;
+  top: 165px;
+}
+
+#dados-primarios td,
+#dados-primarios th {
+  border-bottom: 1px solid black;
+  text-align: center;
+  padding: 2px;
+}
+
+#data-minuta {
+  border-collapse: collapse;
+  width: 964px;
+  font-size: 16px !important;
+  position: absolute;
+  z-index: 1;
+  left: 30px;
+  top: 531px;
+}
+
+#data-minuta td,
+#data-minuta th {
+  border-bottom: 1px solid black;
+  text-align: center;
+  padding: 2px;
+}
+.m_valhoratext {
+  text-align: right !important;
+}
+#m_valorhora {
+  text-align: left !important;
+  padding-left: 10px !important;
+}
+
+/* -------------------- */
+/*       CONTAINER      */
+/* -------------------- */
+.header {
+  width: 100%;
+  height: 54px;
+  background: #f2f1f6;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
+.header .-back {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  left: 10px;
+  color: #007aff;
+}
+
+.header .-title {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+}
+
+.-title p {
+  font-size: 15px;
+  color: #949398;
+}
+
+.header .-buttons {
+  position: absolute;
+  right: 20px;
+  display: flex;
+}
+
+.-buttons > div:not(:first-child) {
+  margin: 0 0 0 10px;
+}
+
+.-buttons img,
+.header img {
+  width: 25px;
+  height: 25px;
+}
+
+.view-area {
+  width: 100vw;
+  height: calc(100vh - 54px);
+  overflow: auto;
+  padding: 54px 0 0 0;
+}
