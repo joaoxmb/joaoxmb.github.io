@@ -149,6 +149,22 @@ const TABELA = [
       {
         "horas": 20,
         "valor": 1465
+      },
+      {
+        "horas": 21,
+        "valor": 1559.5
+      },
+      {
+        "horas": 22,
+        "valor": 1654
+      },
+      {
+        "horas": 23,
+        "valor": 1748.5
+      },
+      {
+        "horas": 24,
+        "valor": 1843
       }
     ]
   }
