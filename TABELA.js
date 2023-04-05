@@ -169,7 +169,7 @@ const TABELA = [
     ]
   },
   {
-    id: 4,
+    id: "4",
     nome: "R$ 51,77",
     descricao: "",
     valores: [
