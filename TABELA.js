@@ -149,7 +149,74 @@ const TABELA = [
       {
         "horas": 20,
         "valor": 1465
+      },
+      {
+        "horas": 21,
+        "valor": 1559.5
+      },
+      {
+        "horas": 22,
+        "valor": 1654
+      },
+      {
+        "horas": 23,
+        "valor": 1748.5
+      },
+      {
+        "horas": 24,
+        "valor": 1843
       }
+    ]
+  },
+  {
+    id: "4",
+    nome: "R$ 51,77",
+    descricao: "",
+    valores: [
+      {
+        horas: 10,
+        valor: 517.73
+      },
+      {
+        horas: 11,
+        valor: 611.86
+      },
+      {
+        horas: 12,
+        valor: 705.99
+      },
+      {
+        horas: 13,
+        valor: 800.12
+      },
+      {
+        horas: 14,
+        valor: 894.26
+      },
+      {
+        horas: 15,
+        valor: 988.39
+      },
+      {
+        horas: 16,
+        valor: 1082.52
+      },
+      {
+        horas: 17,
+        valor: 1176.65
+      },
+      {
+        horas: 18,
+        valor: 1270.78
+      },
+      {
+        horas: 19,
+        valor: 1364.92
+      },
+      {
+        horas: 20,
+        valor: 1459.05
+      },
     ]
   }
 ];
