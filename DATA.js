@@ -6,7 +6,7 @@ let DATA = {
   "observacao": "",
   "valor": {
     "tabela": "3",
-    "valorHora": 52,
+    "valorHora": 54,
     "minimoDeHoras": 10
   },
   "diarias": [
