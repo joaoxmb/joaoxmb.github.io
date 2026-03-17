@@ -31,14 +31,14 @@ const user = () => {
 };
 
 const inserirDiarias = () => {
-  tipoDaMinuta();
+  // tipoDaMinuta();
   DATA.diarias.forEach(element => {
 
     const total = () => {
       return DATA.tipo == 'pacote' ? dinheiro(element.valor) : dinheiro(calculadora.valorPorHora(element.horas));
     };
 
-    if(DATA.tipo != 'pacote'){
+    // if(DATA.tipo != 'pacote'){
       const periodo = () => {
         const inicio = moment(element.inicio);
         const termino = moment(inicio).add(element.horas, 'hours')
@@ -55,15 +55,15 @@ const inserirDiarias = () => {
         </tr>
       `);
       
-    }else{
-      $('table tbody').append(`
-        <tr>
-          <td rowspan="${element.cobranca.length+1}"><span>${moment(element.inicio).format('DD/MM/YYYY HH:mm')}</span></td>
-          <td colspan="3">${element.ocorrencia}</td>
-          <td>${total()}</td>
-        </tr>
-      `);
-    }
+    // }else{
+    //   $('table tbody').append(`
+    //     <tr>
+    //       <td rowspan="${element.cobranca.length+1}"><span>${moment(element.inicio).format('DD/MM/YYYY HH:mm')}</span></td>
+    //       <td colspan="3">${element.ocorrencia}</td>
+    //       <td>${total()}</td>
+    //     </tr>
+    //   `);
+    // }
 
     element.cobranca.forEach(( data ) => {
       $('table tbody').append(`
@@ -104,13 +104,13 @@ const inserirObservacao = () => {
 
 };
 
-const tipoDaMinuta = () => {
-  if( DATA.tipo == 'pacote' ){
-    $('#table_por_hora').remove();
-  }else{
-    $('#table_pacote').remove();
-  }
-};
+// const tipoDaMinuta = () => {
+//   if( DATA.tipo == 'pacote' ){
+//     $('#table_por_hora').remove();
+//   }else{
+//     $('#table_pacote').remove();
+//   }
+// };
 
 (async () => {
 
