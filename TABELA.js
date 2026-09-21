@@ -86,7 +86,8 @@ const TABELA = [
       { horas: 17, valor: 1229.62 },
       { horas: 18, valor: 1327.99 },
       { horas: 19, valor: 1426.36 },
-      { horas: 20, valor: 1524.73 }
+      { horas: 20, valor: 1524.73 },
+      { horas: 21, valor: 1623.10}
     ]
   },
   {
